@@ -1,0 +1,23 @@
+.register-form{
+    border: 2px solid black;
+    width: 400px;
+}
+.register-form h1{
+   text-align: center; 
+}
+.register-form .input-group{
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.register-form .input-group label{
+    /* border: 2px solid red; */
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.register-form .input-group input , .register-form .input-group button{
+    border: 2px solid black;
+    font-size: 18px;
+    height: 30px;
+}
