@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './Register.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 export const Login = () => {
 
@@ -8,9 +11,39 @@ export const Login = () => {
     password : ""
   })
 
+  const [ errorMessage, setErrMessages ] = useState(null)
+
   let handleLogin = (e) => {
 
     e.preventDefault()
+
+    let checkAll = {
+      isEmail: false,
+      isPassword: false
+    }
+
+    let err = {}
+
+    if(Loginform.emailid === ""){
+        err.emailid_error = "Email field should not be empty"
+        checkAll.isEmail = false
+      }
+    
+      else{
+        err.emailid_error = ""
+        checkAll.isEmail = true
+      }
+
+      if(Loginform.password === ""){
+        err.password_error = "Password is required"
+      }
+
+       else{
+        err. password_error = ""
+        checkAll.isEmail = true
+      }
+
+      setErrMessages(err)
 
     const userData = JSON.parse(localStorage.getItem("userData"))
 
@@ -35,26 +68,38 @@ export const Login = () => {
   }
   return (
     <>
-      <div className='register-form' onSubmit={handleLogin}>
-          <h1>Login</h1>
-          <form action="">
+      <div className='register-form'>
 
-            <div className="input-group">
+        <div className="form-Headings">
+          <h1>Login</h1>
+          </div>
+          <form action="" onSubmit={handleLogin}>
+
+          <div className="input-group">
             <label htmlFor="">Email: </label>
+            <div className="inputplusicon">
+            <FontAwesomeIcon icon={faEnvelope} className='icon'/>
             <input type="text" 
                 onChange={(e) => setLoginform({...Loginform, emailid: e.target.value})}
-                placeholder='Ex.kiruthiga@gmail.com'
-                />
-            </div>
+                placeholder='Ex.kiruthiga@gmail.com'/>
+                <span className='err'>{errorMessage && errorMessage.emailid_error}</span>
+          </div>
+          </div>      
+
             <div className="input-group">
-            <label htmlFor="">Password</label>
-            <input type="text" 
-                onChange={(e) => setLoginform({...Loginform, password: e.target.value})}
-                placeholder='Ex.xxxx'/>
+              <label htmlFor="">Password</label>
+              <div className="inputplusicon">
+              <FontAwesomeIcon icon={faLock} className='icon' />
+              <input type="password" 
+               onChange={(e) => setLoginform({...Loginform, password: e.target.value})}
+               placeholder='Ex.xxxx'/>
+              <span className='err'>{errorMessage && errorMessage.password_error}</span>
             </div>
-            <div className="input-group">
-                <button type='submit'>Submit</button>
             </div>
+              <div className="input-group">
+              <button type='submit'>Sign in</button>
+            </div>
+
             <Link to="/register">New User?</Link>
           </form>
       </div>

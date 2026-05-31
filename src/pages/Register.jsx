@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
 
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faEnvelope, faPhone, faLock } from '@fortawesome/free-solid-svg-icons'
 export const Register = () => {
 
   let navigate = useNavigate();
@@ -121,47 +122,76 @@ export const Register = () => {
 
     <>
     <div className='register-form'  onSubmit={handleSubmit}>
-      <h1>Registration</h1>
+
+        <div className="form-Headings">
+          <h1>Create account</h1>
+          <p>Start making a difference today</p>
+        </div>
+
         <form action="" >
           <div className="input-group">
-            <label htmlFor="">Enter Name: </label>
-            <input type="text" 
+            <label htmlFor="" className='labelStyle'>Enter Name: </label>
+            <div className="inputplusicon">
+            <FontAwesomeIcon icon={faUser} className='icon'/>
+            <input type="text"
                 onChange={(e) => setRegisterForm({...registerForm, fullname:e.target.value})}
                 placeholder='Ex.Kiruthiga'/>
             <span className='err'>{errorMessage && errorMessage.fullname_error}</span>
           </div>
+          </div>
+
+
           <div className="input-group">
             <label htmlFor="">Email: </label>
+            <div className="inputplusicon">
+            <FontAwesomeIcon icon={faEnvelope} className='icon'/>
             <input type="text" 
                 onChange={(e) => setRegisterForm({...registerForm, emailid: e.target.value})}
                 placeholder='Ex.kiruthiga@gmail.com'/>
                 <span className='err'>{errorMessage && errorMessage.emailid_error}</span>
           </div>
+          </div>
+
+
           <div className="input-group">
             <label htmlFor="">Mobile Number:</label>
+            <div className="inputplusicon">
+            <FontAwesomeIcon icon={faPhone} className='icon' />
             <input type="text"
                 onChange={(e) => setRegisterForm({...registerForm, phone: e.target.value})} 
                 placeholder='Ex.997XXXXXXX'/>
                 <span className='err'>{errorMessage && errorMessage.phone_error}</span>
           </div>
+          </div>
+
+
           <div className="input-group">
             <label htmlFor="">Password</label>
-            <input type="text" 
+            <div className="inputplusicon">
+            <FontAwesomeIcon icon={faLock} className='icon' />
+            <input type="password" 
                 onChange={(e) => setRegisterForm({...registerForm, password: e.target.value})}
                 placeholder='Ex.xxxx'/>
                 <span className='err'>{errorMessage && errorMessage.password_error}</span>
           </div>
+          </div>
           <div className="input-group">
             <label htmlFor="">Confirm Password:</label>
-            <input type="text" 
+             <div className="inputplusicon">
+            <FontAwesomeIcon icon={faLock} className='icon'/>
+            <input type="password" 
                 onChange={(e) => setRegisterForm({...registerForm, confirmPassword: e.target.value})}
                 placeholder='Ex.xxxx'/>
                 <span className='err'>{errorMessage && errorMessage.confirmPassword_error}</span>
           </div>
-          <div className="input-group">
-              <button type='submit'>Submit</button>
           </div>
-          <Link to="/login">Already User?</Link>
+          <div className="input-group">
+              <button type='submit'>Create account</button>
+          </div>
+          <div className="bottomDetails">
+          <p>Already have an account?</p>
+          <Link to="/login">Sign in</Link>
+          </div>
         </form>
     </div>
     </>
