@@ -190,7 +190,7 @@ export const Register = () => {
           </div>
           <div className="bottomDetails">
           <p>Already have an account?</p>
-          <Link to="/login">Sign in</Link>
+          <Link to="/login" className='signDiv'>Sign in</Link>
           </div>
         </form>
     </div>

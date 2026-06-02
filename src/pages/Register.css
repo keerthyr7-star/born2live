@@ -1,9 +1,11 @@
 .register-form{
-    width: 400px;
+     width: 100%;
+     max-width: 400px;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     background-color: white;
+    margin: auto;
 }
 
 .form-Headings{
@@ -58,4 +60,35 @@ button{
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.signDiv{
+    text-decoration: none;
+    color: green;
+}
+
+.signIndetails{
+    text-decoration: none;
+    color: green;
+}
+
+@media (max-width: 480px) {
+    .register-form {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .input-group label {
+        font-size: 14px;
+    }
+
+    .inputplusicon input {
+        height: 38px;
+        font-size: 14px;
+    }
+
+    button {
+        height: 38px;
+        font-size: 14px;
+    }
 }

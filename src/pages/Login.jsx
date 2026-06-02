@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Register.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
 export const Login = () => {
 
@@ -67,7 +67,9 @@ export const Login = () => {
 
   }
   return (
+  
     <>
+    
       <div className='register-form'>
 
         <div className="form-Headings">
@@ -95,14 +97,23 @@ export const Login = () => {
                placeholder='Ex.xxxx'/>
               <span className='err'>{errorMessage && errorMessage.password_error}</span>
             </div>
+            <div className="forgetPassword">
+                <link rel="stylesheet" href="" />
+            </div>
             </div>
               <div className="input-group">
-              <button type='submit'>Sign in</button>
+              <button type='submit' className='loginBtn'>
+              <FontAwesomeIcon icon={faRightToBracket}/>Sign in
+              </button>
             </div>
 
-            <Link to="/register">New User?</Link>
+            <div className="bottomDetails">
+            <p>New User?</p>
+            <Link to="/register" className='signIndetails'>Create an account</Link>
+            </div>
           </form>
       </div>
+      
     </>
   )
 }
